@@ -1,12 +1,31 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import RootPage from './src/pages/RootPage';
+import DetailPAge from './src/pages/DetailPage';
 
 export default function App() {
+  const Stack = createNativeStackNavigator();
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Users"
+          component={RootPage}
+          options={{
+            headerTitleStyle: {
+              color: 'blue',
+            },
+          }}
+        />
+        <Stack.Screen
+          name="DetailPage"
+          component={DetailPAge}
+          options={{ title: 'User Detail', headerTintColor: 'blue' }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
