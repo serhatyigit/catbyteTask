@@ -9,7 +9,7 @@ const FormPage = ({ navigation }) => {
   const dispatch = useDispatch();
   return (
     <Formik
-      initialValues={{ imageURL: '', username: '', age: '' }}
+      initialValues={{ image: '', username: '', age: '' }}
       onSubmit={(values) => {
         dispatch(addUser(values));
         navigation.navigate('Users');
@@ -22,9 +22,9 @@ const FormPage = ({ navigation }) => {
             autoCorrect={false}
             autoCapitalize="none"
             style={styles.textInput}
-            onChangeText={handleChange('imageURL')}
-            onBlur={handleBlur('imageURL')}
-            value={values.imageURL}
+            onChangeText={handleChange('image')}
+            onBlur={handleBlur('image')}
+            value={values.image}
           />
           <TextInput
             placeholder="Username"
