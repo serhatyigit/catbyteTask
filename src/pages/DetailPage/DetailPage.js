@@ -2,10 +2,8 @@ import { View, Text, Image } from 'react-native';
 import React from 'react';
 import styles from './DetailPage.styles';
 
-const DetailPAge = ({ route }) => {
+const DetailPage = ({ route }) => {
   const { picture, firstName, lastName, age, company } = route.params.props;
-
-  console.log(company);
 
   return (
     <View style={styles.container}>
@@ -23,4 +21,4 @@ const DetailPAge = ({ route }) => {
   );
 };
 
-export default DetailPAge;
+export default DetailPage;

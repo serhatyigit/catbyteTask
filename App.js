@@ -1,9 +1,9 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import RootPage from './src/pages/RootPage';
 import DetailPAge from './src/pages/DetailPage';
+import FormPage from './src/pages/FormPage';
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -23,6 +23,11 @@ export default function App() {
           name="DetailPage"
           component={DetailPAge}
           options={{ title: 'User Detail', headerTintColor: 'blue' }}
+        />
+        <Stack.Screen
+          name="FormPage"
+          component={FormPage}
+          options={{ title: 'Add User Form', headerTintColor: 'blue' }}
         />
       </Stack.Navigator>
     </NavigationContainer>

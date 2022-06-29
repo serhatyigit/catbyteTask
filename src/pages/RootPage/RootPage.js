@@ -1,4 +1,10 @@
-import { View, Text, FlatList, ActivityIndicator } from 'react-native';
+import {
+  View,
+  Text,
+  FlatList,
+  ActivityIndicator,
+  TouchableOpacity,
+} from 'react-native';
 import React from 'react';
 import useFetch from '../../hooks/useFetch';
 import styles from './RootPage.styles';
@@ -48,8 +54,12 @@ const RootPage = ({ navigation }) => {
     );
   }
 
+  const openForm = () => {
+    navigation.navigate('FormPage');
+  };
+
   return (
-    <View>
+    <View style={styles.container}>
       <FlatList
         style={styles.flatlist}
         numColumns={2}
@@ -57,6 +67,13 @@ const RootPage = ({ navigation }) => {
         renderItem={renderUsers}
         keyExtractor={keyExtractor}
       />
+      <View>
+        <TouchableOpacity onPress={openForm}>
+          <View style={styles.buttonContainer}>
+            <Text style={styles.buttonText}>Add</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
