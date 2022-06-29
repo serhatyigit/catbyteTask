@@ -20,6 +20,7 @@ const FormPage = ({ navigation }) => {
           <TextInput
             placeholder="Image URL"
             autoCorrect={false}
+            autoCapitalize="none"
             style={styles.textInput}
             onChangeText={handleChange('imageURL')}
             onBlur={handleBlur('imageURL')}
