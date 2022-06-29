@@ -5,15 +5,24 @@ import {
   ActivityIndicator,
   TouchableOpacity,
 } from 'react-native';
-import React from 'react';
+import React, { useEffect } from 'react';
 import useFetch from '../../hooks/useFetch';
 import styles from './RootPage.styles';
 import UserCard from '../../components/UserCard';
+import { useDispatch, useSelector } from 'react-redux';
+import { setUsers } from '../../store/users';
 
 const RootPage = ({ navigation }) => {
+  const dispatch = useDispatch();
   const url = 'https://dummyjson.com/users';
   const { data, error, loading } = useFetch(url);
-  const usersData = data.users;
+  const usersData = useSelector((state) => state);
+
+  useEffect(() => {
+    if (data.users) {
+      dispatch(setUsers(data.users));
+    }
+  }, [data]);
 
   const onPressUser = (props) => {
     navigation.navigate('DetailPage', { props });

@@ -2,13 +2,16 @@ import { Button, TextInput, View, Text } from 'react-native';
 import React from 'react';
 import styles from './FormPage.styles';
 import { Formik } from 'formik';
+import { useDispatch } from 'react-redux';
+import { addUser } from '../../store/users';
 
 const FormPage = ({ navigation }) => {
+  const dispatch = useDispatch();
   return (
     <Formik
-      initialValues={{ imageURL: '', name: '', age: '' }}
+      initialValues={{ imageURL: '', username: '', age: '' }}
       onSubmit={(values) => {
-        console.log(values);
+        dispatch(addUser(values));
         navigation.navigate('Users');
       }}
     >
@@ -23,12 +26,12 @@ const FormPage = ({ navigation }) => {
             value={values.imageURL}
           />
           <TextInput
-            placeholder="Name"
+            placeholder="Username"
             autoCorrect={false}
             style={styles.textInput}
-            onChangeText={handleChange('name')}
-            onBlur={handleBlur('name')}
-            value={values.name}
+            onChangeText={handleChange('username')}
+            onBlur={handleBlur('username')}
+            value={values.username}
           />
           <TextInput
             placeholder="Age"
